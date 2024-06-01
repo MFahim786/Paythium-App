@@ -22,7 +22,6 @@ import {
   PiFeatherDuotone,
   PiFileImageDuotone,
   PiFolderLockDuotone,
-  PiFolderNotchDuotone,
   PiGridFourDuotone,
   PiHammerDuotone,
   PiHeadsetDuotone,
