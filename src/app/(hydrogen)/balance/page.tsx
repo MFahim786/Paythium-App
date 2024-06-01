@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 interface BalanceProps {
-  authToken: string | null;
+ 
 }
 
 declare global {
@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const Balance: React.FC<BalanceProps> = ({ authToken }) => {
+const Balance: React.FC<BalanceProps> = () => {
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     const script = document.createElement('script');
@@ -43,7 +43,7 @@ const Balance: React.FC<BalanceProps> = ({ authToken }) => {
     return () => {
       document.body.removeChild(script);
     };
-  }, [authToken]);
+  }, []);
 
   return (
     <div id="balance"></div>
