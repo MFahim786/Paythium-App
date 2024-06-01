@@ -61,17 +61,25 @@ export const menuItems = [
  
  
   {
-    name: 'Financial',
-    href: routes.financial.dashboard,
+    name: 'Payportal',
+    href: '/pay-portal',
     icon: <PiCurrencyCircleDollarDuotone />,
   },
  
- 
   {
-    name: 'Support',
-    href: routes.support.dashboard,
-    icon: <PiHeadsetDuotone />,
+    name: 'Vendore Onboarding',
+    href: '/my_component',
+    icon: <PiUserCircleDuotone />,
   },
+  {
+    name: 'Balance',
+    href: '/balance',
+    icon: <PiCurrencyDollarDuotone />,},
+  // {
+  //   name: 'Support',
+  //   href: routes.support.dashboard,
+  //   icon: <PiHeadsetDuotone />,
+  // },
 
   // label start
   
@@ -164,11 +172,11 @@ export const menuItems = [
   //   href: routes.rolesPermissions,
   //   icon: <PiFolderLockDuotone />,
   // },
-  {
-    name: 'Point of Sale',
-    href: routes.pos.index,
-    icon: <PiCreditCardDuotone />,
-  },
+  // {
+  //   name: 'Point of Sale',
+  //   href: routes.pos.index,
+  //   icon: <PiCreditCardDuotone />,
+  // },
   {
     name: 'Invoice Builder',
     href: routes.invoice.builder,
@@ -231,40 +239,40 @@ export const menuItems = [
   //   icon: <PiEnvelopeDuotone />,
   // },
   // label start
-  {
-    name: 'Forms',
-  },
-  // label end
-  {
-    name: 'Account Settings',
-    href: routes.forms.profileSettings,
-    icon: <PiUserGearDuotone />,
-  },
-  {
-    name: 'Notification Preference',
-    href: routes.forms.notificationPreference,
-    icon: <PiBellSimpleRingingDuotone />,
-  },
   // {
-  //   name: 'Personal Information',
-  //   href: routes.forms.personalInformation,
-  //   icon: <PiUserDuotone />,
+  //   name: 'Forms',
   // },
-  {
-    name: 'Newsletter',
-    href: routes.forms.newsletter,
-    icon: <PiEnvelopeSimpleOpenDuotone />,
-  },
-  {
-    name: 'Multi Step',
-    href: routes.multiStep,
-    icon: <PiStepsDuotone />,
-  },
-  {
-    name: 'Payment Checkout',
-    href: routes.eCommerce.checkout,
-    icon: <PiCreditCardDuotone />,
-  },
+  // // label end
+  // {
+  //   name: 'Account Settings',
+  //   href: routes.forms.profileSettings,
+  //   icon: <PiUserGearDuotone />,
+  // },
+  // {
+  //   name: 'Notification Preference',
+  //   href: routes.forms.notificationPreference,
+  //   icon: <PiBellSimpleRingingDuotone />,
+  // },
+  // // {
+  // //   name: 'Personal Information',
+  // //   href: routes.forms.personalInformation,
+  // //   icon: <PiUserDuotone />,
+  // // },
+  // {
+  //   name: 'Newsletter',
+  //   href: routes.forms.newsletter,
+  //   icon: <PiEnvelopeSimpleOpenDuotone />,
+  // },
+  // {
+  //   name: 'Multi Step',
+  //   href: routes.multiStep,
+  //   icon: <PiStepsDuotone />,
+  // },
+  // {
+  //   name: 'Payment Checkout',
+  //   href: routes.eCommerce.checkout,
+  //   icon: <PiCreditCardDuotone />,
+  // },
   // label start
   // {
   //   name: 'Tables',
@@ -309,11 +317,7 @@ export const menuItems = [
     href: routes.profile,
     icon: <PiUserCircleDuotone />,
   },
-  {
-    name: 'Welcome',
-    href: routes.welcome,
-    icon: <PiShootingStarDuotone />,
-  },
+ 
   {
     name: 'Coming soon',
     href: routes.comingSoon,

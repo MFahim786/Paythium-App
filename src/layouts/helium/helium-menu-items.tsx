@@ -63,6 +63,11 @@ export const menuItems = [
     icon: <PiCalendarDuotone />,
   },
   {
+    name: 'my-compo',
+    href: routes.appointment.dashboard,
+    icon: <PiCalendarDuotone />,
+  },
+  {
     name: 'Executive',
     href: routes.executive.dashboard,
     icon: <PiBriefcase />,
@@ -405,11 +410,11 @@ export const menuItems = [
     href: routes.profile,
     icon: <PiUserCircle />,
   },
-  {
-    name: 'Welcome',
-    href: routes.welcome,
-    icon: <PiShootingStar />,
-  },
+  // {
+  //   name: 'Welcome',
+  //   href: routes.welcome,
+  //   icon: <PiShootingStar />,
+  // },
   {
     name: 'Coming soon',
     href: routes.comingSoon,

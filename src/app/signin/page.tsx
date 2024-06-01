@@ -21,26 +21,11 @@ export default function SignIn() {
           continue.
         </>
       }
-      description="By signing up, you will gain access to exclusive content, special
-      offers, and be the first to hear about exciting news and updates."
-      bannerTitle="The simplest way to manage your workspace."
-      bannerDescription="Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-      amet sint velit officia consequat duis."
+      description="By signing up, you will gain access to your account and transaction detailes."
+      bannerTitle="The simplest way to manage your Transactiones"
+      bannerDescription="Effortlessly manage vendor transactions and streamline administrative tasks with Paythium. Our system offers secure, efficient, and intuitive solutions designed to enhance your business operations, akin to banking services."
       isSocialLoginActive={true}
-      pageImage={
-        <div className="relative mx-auto aspect-[4/3.37] w-[500px] xl:w-[620px] 2xl:w-[820px]">
-          <Image
-            src={
-              'https://isomorphic-furyroad.s3.amazonaws.com/public/auth/sign-up.webp'
-            }
-            alt="Sign Up Thumbnail"
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw"
-            className="object-cover"
-          />
-        </div>
-      }
+     
     >
       <SignInForm />
     </AuthWrapperOne>

@@ -20,7 +20,7 @@ export default function SignUp() {
           </span>
         </>
       }
-      description="By signing up, you will gain access to exclusive content, special offers, and be the first to hear about exciting news and updates."
+      description="By signing up, you will gain access to your account and transactionions detailes."
       bannerTitle="The simplest way to manage your workspace."
       bannerDescription="Amet minim mollit non deserunt ullamco est sit aliqua dolor do
       amet sint velit officia consequat duis."

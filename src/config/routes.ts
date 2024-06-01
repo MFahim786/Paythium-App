@@ -60,6 +60,12 @@ export const routes = {
   financial: {
     dashboard: '/financial',
   },
+  mycomponent: {
+    dashboard: '/hhhh',
+  },
+  balance:{
+   
+  },
   file: {
     dashboard: '/file',
     manager: '/file-manager',
