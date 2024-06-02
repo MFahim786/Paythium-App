@@ -15,7 +15,7 @@ const PayPortal: React.FC<PayPortalProps> = () => {
   const [tkoen, setToken] = useState('');
   useEffect(() => {
     const storedAuthToken = localStorage.getItem('accessToken');
-    setToken(storedAuthToken);
+    // setToken(storedAuthToken);
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://cdn.unipaas.com/embedded-ui.js';
@@ -45,7 +45,7 @@ const PayPortal: React.FC<PayPortalProps> = () => {
     return () => {
       document.body.removeChild(script);
     };
-  }, [tkoen]);
+  }, []);
 
   return (
     <div id="pay_portal"></div>
