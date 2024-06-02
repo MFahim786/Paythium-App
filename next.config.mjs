@@ -1,28 +1,56 @@
+import './src/env.mjs';
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-  reactStrictMode: true,
   images: {
-    // loader: "custom",
-    // loaderFile: "./loader.js",
-
-    domains: [
-      "https://sandbox.unipaas.com/platform/authorize", "http://localhost:3001", 'kyoopay-bucket.s3.amazonaws.com','kyoopay.s3.eu-north-1.amazonaws.com','https://dev-kyoopay-be.rtdemo.com'
-    ]
-  },
-  async headers() {
-    return [
+    remotePatterns: [
       {
-        source: '/(.*)', // Match all routes
-        headers: [
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
-          { key: 'Access-Control-Allow-Origin', value: '*' }, // Allow requests from any origin
-          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, PUT, DELETE, PATCH, OPTIONS' }, // Allow specified HTTP methods
-          { key: 'Access-Control-Allow-Headers', value: '*' }, // Allow all headers
-        ],
+        protocol: 'https',
+        hostname: 'randomuser.me',
+        pathname: '/api/portraits/**',
       },
-    ];
+      {
+        protocol: 'https',
+        hostname: 'cloudflare-ipfs.com',
+        pathname: '/ipfs/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '/u/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3.amazonaws.com',
+        pathname: '/redqteam.com/isomorphic-furyroad/public/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'isomorphic-furyroad.s3.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'isomorphic-furyroad.s3.amazonaws.com',
+      },
+    ],
   },
+  reactStrictMode: false,
 };
-
 
 export default nextConfig;
