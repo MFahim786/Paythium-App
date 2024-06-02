@@ -43,7 +43,7 @@ export default function AuthWrapperFour({
   children,
   title,
   isSocialLoginActive = false,
-  isSignIn = false,
+  isSignIn = true,
   className = '',
 }: {
   children: React.ReactNode;

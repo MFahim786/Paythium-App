@@ -3,7 +3,7 @@ import { z } from 'zod';
 // form zod validation schema
 export const loginSchema = z.object({
   email: z.string(),
-  password: z.string().min(1),
+  password: z.string().optional(),
   rememberMe: z.boolean().optional(),
 });
 

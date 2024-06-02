@@ -14,7 +14,7 @@ export default function AuthWrapperThree({
   children,
   title,
   isSocialLoginActive = false,
-  isSignIn = false,
+  isSignIn = true,
   className = '',
 }: {
   children: React.ReactNode;

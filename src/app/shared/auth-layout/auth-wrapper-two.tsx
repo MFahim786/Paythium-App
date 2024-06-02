@@ -27,7 +27,7 @@ export default function AuthWrapperTwo({
   children,
   title,
   isSocialLoginActive = false,
-  isSignIn = false,
+  isSignIn = true,
 }: {
   children: React.ReactNode;
   title: React.ReactNode;
