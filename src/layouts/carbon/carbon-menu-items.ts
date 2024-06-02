@@ -81,11 +81,11 @@ export const carbonMenuItems: MenuItemsType[] = [
     title: 'Overview',
     icon: PiBrowserDuotone,
     menuItems: [
-      {
-        name: 'File Manager',
-        href: '/',
-        icon: PiFolderNotchDuotone,
-      },
+      // {
+      //   name: 'File Manager',
+      //   href: '/',
+      //   icon: PiFolderNotchDuotone,
+      // },
       {
         name: 'Appointment',
         href: routes.appointment.dashboard,
