@@ -7,9 +7,9 @@ import { SubmitHandler } from 'react-hook-form';
 import { PiArrowRightBold } from 'react-icons/pi';
 import { Checkbox, Password, Button, Input, Text } from 'rizzui';
 import { Form } from '@/components/ui/form';
-import { useRouter } from 'next/navigation';
+import { routes } from '@/config/routes';
 import { loginSchema, LoginSchema } from '@/utils/validators/login.schema';
-import venderOnbording from '../../../../app/auth/vendor-onbording/index'
+
 const initialValues: LoginSchema = {
   email: 'admin@admin.com',
   password: 'admin',
@@ -17,31 +17,21 @@ const initialValues: LoginSchema = {
 };
 
 export default function SignInForm() {
-  const routes= useRouter()
   //TODO: why we need to reset it here
   const [reset, setReset] = useState({});
 
-  const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
+  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
     console.log(data);
-
-    // Call the vendorOnboarding function
-    try {
-      const response = await venderOnbording({ vendorId: data.password });
-      console.log("Response is", response?.accessToken);
-
-      if (response?.accessToken) {
-        localStorage.setItem('accessToken', response?.accessToken);
-        alert('Login Successful');
-        routes.push('/'); // Navigate to the dashboard
-      }
-    } catch (error) {
-      console.error('Error during onboarding:', error);
-    }
+    signIn('credentials', {
+      ...data,
+    });
+    // setReset({ email: "", password: "", isRememberMe: false });
   };
 
   return (
     <>
       <Form<LoginSchema>
+        validationSchema={loginSchema}
         resetValues={reset}
         onSubmit={onSubmit}
         useFormProps={{
