@@ -21,7 +21,7 @@ export default function SignInForm() {
     event.preventDefault();
     console.log({ vendorId, rememberMe });
 
-    // Call the vendorOnboarding function
+    // Call the vendorOnboarding function 
     try {
       const response = await venderOnbording({ vendorId });
       console.log("Response is", response?.accessToken);
