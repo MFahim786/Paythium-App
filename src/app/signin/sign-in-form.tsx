@@ -16,7 +16,7 @@ export default function SignInForm() {
     email: 'admin@admin.com',
     password: 'admin',
     rememberMe: true,
-  };
+  };  
   const handleSubmit = async (event:any) => {
     event.preventDefault();
     console.log({ vendorId, rememberMe });
