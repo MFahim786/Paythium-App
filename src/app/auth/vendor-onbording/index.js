@@ -28,3 +28,4 @@ const venderOnbording = async ({vendorId}) => {
 };
 
 export default venderOnbording;
+  
