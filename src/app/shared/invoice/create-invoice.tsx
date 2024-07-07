@@ -258,7 +258,7 @@ import {
   invoiceFormSchema,
 } from '@/utils/validators/create-invoice.schema';
 import axios from 'axios';
-
+import { createInvoice } from '@/app/auth/vendor-onbording';
 const invoiceItems = [
   { item: '', description: '', quantity: 1, price: undefined },
 ];
@@ -273,96 +273,97 @@ export default function CreateInvoice({
   const [reset, setReset] = useState({});
   const [isLoading, setLoading] = useState(false);
 
-  const onSubmit: SubmitHandler<InvoiceFormInput> = (data) => {
+  const onSubmit: SubmitHandler<InvoiceFormInput> =async (data) => {
     const invoiceData = {
-      // reference: data.invoiceNumber,
-      // currency: 'GB', // Replace with your desired currency
-      // totalAmount: data.items.reduce((acc, item) => acc + item.quantity * item.price, 0),
-      // vatAmount: 0, // Update with actual VAT amount if available
-      // dueDate: data.dueDate.toISOString(),
-      // totalPaid: 0, // Update with actual paid amount if available
-      // paymentStatus: 'unpaid', // Replace with actual status
-      // isRecurring: false, // Update based on your requirements
-      // external: false, // Update based on your requirements
-      // lineItems: data.items.map(item => ({
-      //   description: item.description,
-      //   amount: item.price,
-      //   quantity: item.quantity,
-      // })),
-      // consumer: {
-      //   reference: data.toPhone,
-      //   name: data.toName,
-      //   email: data.toAddress, // Assuming address field can contain email
-      // },
-      
-        "reference": "INV-12357",
-        "currency": "GBP",
-        "totalAmount": 99.5,
-        "vatAmount": 19.9,
-        "dueDate": "2022-12-12T08:42:52.933Z",
-      
-        "paymentStatus": "unpaid",
-        "totalPaid": 0,
-        "customer": {
-          "reference": "1234",
-          "email": "test@gmail.com",
-          "name": "Kevin Malone"
-        },
-        "lineItems": [
-          {
-            "description": "line 1",
-            "unitPrice": 10.6,
-            "quantity": 3
-          },
-          {
-            "description": "line 2",
-            "unitPrice": 19.3,
-            "quantity": 1
-          }
-        ],
-        "isRecurring": true,
-        "subscriptionId": "sub-123",
-        "external":false,
-        "batchId": "batch-777",
-        "publicUrl": "http://yourcompany.com/invoice.pdf"
-      
-      
-    };
-
-    axios.post('https://sandbox.unipaas.com/platform/vendors/668a6c81e12d6161edffaa29/invoices', invoiceData, {
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer   BoRhn2IG9BcMhxIVhWkKmA==',
-        'Content-type': 'application/json',
+      reference: data.invoiceNumber,
+      currency: 'GB', // Replace with your desired currency
+      totalAmount: data.items.reduce((acc, item) => acc + item.quantity * item.price, 0),
+      vatAmount: 0, // Update with actual VAT amount if available
+      dueDate: data.dueDate.toISOString(),
+      totalPaid: 0, // Update with actual paid amount if available
+      paymentStatus: 'unpaid', // Replace with actual status
+      isRecurring: false, // Update based on your requirements
+      external: false, // Update based on your requirements
+      lineItems: data.items.map(item => ({
+          description: item.description,
+          unitPrice: item.price,
+          quantity: item.quantity,
+      })),
+      consumer: {
+          reference: data.toPhone,
+          name: data.toName,
+          // email: data.toAddress,
       },
-    }).then(response => {
-      toast.success(
-        <Text as="b">Invoice successfully {id ? 'updated' : 'created'}</Text>
-      );
-      setLoading(false);
-      console.log('Invoice created ->', response.data);
-      setReset({
-        fromName: '',
-        fromAddress: '',
-        fromPhone: '',
-        toName: '',
-        toAddress: '',
-        toPhone: '',
-        shipping: '',
-        discount: '',
-        taxes: '',
-        createDate: new Date(),
-        status: 'draft',
-        items: invoiceItems,
-      });
-    }).catch(error => {
-      toast.error('Failed to create invoice');
-      setLoading(false);
-      console.error('Error creating invoice ->', error);
-    });
-
-    setLoading(true);
   };
+
+  setLoading(true);
+
+  try {
+      const response = await createInvoice({invoiceData});
+      toast.success('Invoice successfully created');
+      console.log('Invoice created ->', response.data);
+      
+      // Reset form or perform any other actions after successful invoice creation
+      setReset({
+          fromName: '',
+          fromAddress: '',
+          fromPhone: '',
+          toName: '', 
+          toAddress: '',
+          toPhone: '',
+          shipping: '',
+          discount: '',
+          taxes: '',
+          createDate: new Date(),
+          status: 'draft',
+          items: [], // Assuming you want to clear items after reset
+      });
+
+  } catch (error) {
+      console.error('Error creating invoice ->', error);
+      toast.error('Failed to create invoice');
+  } finally {
+      setLoading(false);
+  }
+};
+  // const response=  axios.post('https://sandbox.unipaas.com/platform/vendors/668a6c81e12d6161edffaa29/invoices', invoiceData, {
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Authorization': 'Bearer   BoRhn2IG9BcMhxIVhWkKmA==',
+  //       'Content-type': 'application/json',
+  //     },
+  //   }).then(response => {
+  //     console.log("++++++++++++++++")
+  //     toast.success(
+  //       <Text as="b">Invoice successfully {id ? 'updated' : 'created'}</Text>
+  //     );
+  //     setLoading(false);
+  //     console.log('Invoice created ->', response.data);
+  //     setReset({
+  //       fromName: '',
+  //       fromAddress: '',
+  //       fromPhone: '',
+  //       toName: '', 
+  //       toAddress: '',
+  //       toPhone: '',
+  //       shipping: '',
+  //       discount: '',
+  //       taxes: '',
+  //       createDate: new Date(),
+  //       status: 'draft',
+  //       items: invoiceItems,
+  //     });
+  //   }).catch(error => {
+      
+  //     console.error('Error creating invoice ->', error);
+  //     toast.error('Failed to create invoice');
+  //     setLoading(false);
+  //     console.error('Error creating invoice ->', error);
+  //   });
+
+    // setLoading(true);
+    
+  
 
   const newItems = record?.items
     ? record.items.map((item) => ({
