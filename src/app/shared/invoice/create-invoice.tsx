@@ -275,32 +275,65 @@ export default function CreateInvoice({
 
   const onSubmit: SubmitHandler<InvoiceFormInput> = (data) => {
     const invoiceData = {
-      reference: data.invoiceNumber,
-      currency: 'GB', // Replace with your desired currency
-      totalAmount: data.items.reduce((acc, item) => acc + item.quantity * item.price, 0),
-      vatAmount: 0, // Update with actual VAT amount if available
-      dueDate: data.dueDate.toISOString(),
-      totalPaid: 0, // Update with actual paid amount if available
-      paymentStatus: 'unpaid', // Replace with actual status
-      isRecurring: false, // Update based on your requirements
-      external: false, // Update based on your requirements
-      lineItems: data.items.map(item => ({
-        description: item.description,
-        amount: item.price,
-        quantity: item.quantity,
-      })),
-      consumer: {
-        reference: data.toPhone,
-        name: data.toName,
-        email: data.toAddress, // Assuming address field can contain email
-      },
+      // reference: data.invoiceNumber,
+      // currency: 'GB', // Replace with your desired currency
+      // totalAmount: data.items.reduce((acc, item) => acc + item.quantity * item.price, 0),
+      // vatAmount: 0, // Update with actual VAT amount if available
+      // dueDate: data.dueDate.toISOString(),
+      // totalPaid: 0, // Update with actual paid amount if available
+      // paymentStatus: 'unpaid', // Replace with actual status
+      // isRecurring: false, // Update based on your requirements
+      // external: false, // Update based on your requirements
+      // lineItems: data.items.map(item => ({
+      //   description: item.description,
+      //   amount: item.price,
+      //   quantity: item.quantity,
+      // })),
+      // consumer: {
+      //   reference: data.toPhone,
+      //   name: data.toName,
+      //   email: data.toAddress, // Assuming address field can contain email
+      // },
+      
+        "reference": "INV-12357",
+        "currency": "GBP",
+        "totalAmount": 99.5,
+        "vatAmount": 19.9,
+        "dueDate": "2022-12-12T08:42:52.933Z",
+      
+        "paymentStatus": "unpaid",
+        "totalPaid": 0,
+        "customer": {
+          "reference": "1234",
+          "email": "test@gmail.com",
+          "name": "Kevin Malone"
+        },
+        "lineItems": [
+          {
+            "description": "line 1",
+            "unitPrice": 10.6,
+            "quantity": 3
+          },
+          {
+            "description": "line 2",
+            "unitPrice": 19.3,
+            "quantity": 1
+          }
+        ],
+        "isRecurring": true,
+        "subscriptionId": "sub-123",
+        "external":false,
+        "batchId": "batch-777",
+        "publicUrl": "http://yourcompany.com/invoice.pdf"
+      
+      
     };
 
-    axios.post('https://sandbox.unipaas.com/platform/vendors/65fc0592d1c4c6a9a46763d1/invoices', invoiceData, {
+    axios.post('https://sandbox.unipaas.com/platform/vendors/668a6c81e12d6161edffaa29/invoices', invoiceData, {
       headers: {
-        'accept': 'application/json',
-        'authorization': 'Bearer   BoRhn2IG9BcMhxIVhWkKmA==', // Replace with your actual token
-        'content-type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer   BoRhn2IG9BcMhxIVhWkKmA==',
+        'Content-type': 'application/json',
       },
     }).then(response => {
       toast.success(
