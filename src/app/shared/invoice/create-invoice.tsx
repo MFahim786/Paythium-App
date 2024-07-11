@@ -275,13 +275,14 @@ export default function CreateInvoice({
 
   const onSubmit: SubmitHandler<InvoiceFormInput> =async (data) => {
     const invoiceData = {
-      reference: data.invoiceNumber,
+      reference: "222222",
       currency: 'GB', // Replace with your desired currency
       totalAmount: data.items.reduce((acc, item) => acc + item.quantity * item.price, 0),
       vatAmount: 0, // Update with actual VAT amount if available
       dueDate: data.dueDate.toISOString(),
       totalPaid: 0, // Update with actual paid amount if available
-      paymentStatus: 'unpaid', // Replace with actual status
+     
+      paymentStatus:'paid', 
       isRecurring: false, // Update based on your requirements
       external: false, // Update based on your requirements
       lineItems: data.items.map(item => ({
@@ -326,42 +327,7 @@ export default function CreateInvoice({
       setLoading(false);
   }
 };
-  // const response=  axios.post('https://sandbox.unipaas.com/platform/vendors/668a6c81e12d6161edffaa29/invoices', invoiceData, {
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Authorization': 'Bearer   BoRhn2IG9BcMhxIVhWkKmA==',
-  //       'Content-type': 'application/json',
-  //     },
-  //   }).then(response => {
-  //     console.log("++++++++++++++++")
-  //     toast.success(
-  //       <Text as="b">Invoice successfully {id ? 'updated' : 'created'}</Text>
-  //     );
-  //     setLoading(false);
-  //     console.log('Invoice created ->', response.data);
-  //     setReset({
-  //       fromName: '',
-  //       fromAddress: '',
-  //       fromPhone: '',
-  //       toName: '', 
-  //       toAddress: '',
-  //       toPhone: '',
-  //       shipping: '',
-  //       discount: '',
-  //       taxes: '',
-  //       createDate: new Date(),
-  //       status: 'draft',
-  //       items: invoiceItems,
-  //     });
-  //   }).catch(error => {
-      
-  //     console.error('Error creating invoice ->', error);
-  //     toast.error('Failed to create invoice');
-  //     setLoading(false);
-  //     console.error('Error creating invoice ->', error);
-  //   });
 
-    // setLoading(true);
     
   
 

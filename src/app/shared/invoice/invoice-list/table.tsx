@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useCallback, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTable } from '@/hooks/use-table';
@@ -7,6 +6,7 @@ import { useColumn } from '@/hooks/use-column';
 import { Button } from 'rizzui';
 import ControlledTable from '@/components/controlled-table';
 import { getColumns } from '@/app/shared/invoice/invoice-list/columns';
+
 const FilterElement = dynamic(
   () => import('@/app/shared/invoice/invoice-list/filter-element'),
   { ssr: false }
@@ -23,6 +23,8 @@ const filterState = {
 };
 
 export default function InvoiceTable({ data = [] }: { data: any[] }) {
+  console.log("InvoiceTable Data:", data);
+
   const [pageSize, setPageSize] = useState(10);
 
   const onHeaderCellClick = (value: string) => ({

@@ -111,10 +111,10 @@ export const menuItems = [
         name: 'List',
         href: routes.invoice.home,
       },
-      {
-        name: 'Details',
-        href: routes.invoice.details(DUMMY_ID),
-      },
+      // {
+      //   name: 'Details',
+      //   href: routes.invoice.details(DUMMY_ID),
+      // },
       {
         name: 'Create',
         href: routes.invoice.create,

@@ -1,17 +1,16 @@
+'use client';  // This line makes the component a Client Component
+
 import Link from 'next/link';
 import { routes } from '@/config/routes';
 import { Button } from 'rizzui';
 import PageHeader from '@/app/shared/page-header';
 import InvoiceTable from '@/app/shared/invoice/invoice-list/table';
 import { PiPlusBold } from 'react-icons/pi';
-import { invoiceData } from '@/data/invoice-data';
 import ExportButton from '@/app/shared/export-button';
-import { metaObject } from '@/config/site.config';
-
-export const metadata = {
-  ...metaObject('Invoices'),
-};
-
+import { getInvoice } from '@/app/auth/vendor-onbording';
+import { useEffect, useState } from 'react';
+import InvoiceList from './invoicelist';
+ import { invoiceData } from '@/data/invoice-data';
 const pageHeader = {
   title: 'Invoice List',
   breadcrumb: [
@@ -29,7 +28,34 @@ const pageHeader = {
   ],
 };
 
-export default function InvoiceListPage() {
+const InvoiceListPage = () => {
+  // const [invoiceData, setInvoiceData] = useState([]);
+  // console.log("---------",invoiceData);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await getInvoice();
+  //       const data = response.items.map(item => ({
+  //         id: item.id,
+  //         name: item.customer.name,
+  //         userName: item.customer.reference,
+  //         avatar: '', // Add appropriate avatar URL if available
+  //         email: item.customer.email,
+  //         dueDate: item.dueDate,
+  //         amount: item.totalAmount.toString(),
+  //         status: item.paymentStatus,
+  //         createdAt: item.createdAt,
+  //       }));
+  //       console.log('Mapped Data:', data);
+  //       setInvoiceData(data);
+  //     } catch (error) {
+  //       console.error('Error fetching invoice data:', error);
+  //     }
+  //   };
+  
+  //   fetchData();
+  // }, []);
+  
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
@@ -46,9 +72,12 @@ export default function InvoiceListPage() {
             </Button>
           </Link>
         </div>
-      </PageHeader>
+      </PageHeader> 
 
-      <InvoiceTable data={invoiceData} />
+       <InvoiceTable data={invoiceData} />
+      {/* <InvoiceList/>  */}
     </>
   );
-}
+};
+
+export default InvoiceListPage;
